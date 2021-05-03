@@ -62,6 +62,11 @@ public class TestConfig implements CommandLineRunner {
 		Product p4 = new Product(null, "Livro - livro", "Sobre economia",
 				30.44, "");
 		
+		p1.getCategories().add(c2);
+		p2.getCategories().add(c1);
+		p3.getCategories().add(c3);
+		p4.getCategories().add(c2);
+		
 		userRepository.saveAll(Arrays.asList(u1, u2, u3));
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3,o4,o5));
 		categoryRepository.saveAll(Arrays.asList(c1,c2,c3,c4));
