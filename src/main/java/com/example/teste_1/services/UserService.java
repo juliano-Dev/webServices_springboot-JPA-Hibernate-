@@ -26,5 +26,26 @@ public class UserService {
 		Optional<User> obj = repository.findById(id);
 		return obj.get();
 	}
+	
+	public User insert(User obj) {
+		return repository.save(obj);
+	}
+	
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+	
+	public User update(Long id, User obj) {
+		//getOne ñ busca no banco o objeto, sendo mais eficiente q o findById
+		User user = repository.getOne(id);
+		updateData(user, obj);
+		return repository.save(user);
+	}
+
+	private void updateData(User user, User obj) {
+		user.setNome(obj.getNome());
+		user.setEmail(obj.getEmail());
+		user.setPhone(obj.getPhone());		
+	}
 
 }
